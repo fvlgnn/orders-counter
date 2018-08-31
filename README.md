@@ -1,19 +1,29 @@
-# OrdersCounter by @fvlgnn || @cianaweb
+# OrdersCounter
+**by @fvlgnn || @cianaweb**
+
 ---
+
+## System
 
 * AMP (Apache2, MySQL5+, PHP7+)
 ---
+
+## Framework
 
 * CodeIgniter 3.1.*
 * Grocery Crud 1.6.*
 ---
 
+## Style
+
 * Bootstrap 3.*
 * StartBootstrap - SB Admin
+* font-awesome 4.7.*
 ---
 
+## JavaScrip
+
 * jQuery 1.12.*
-* font-awesome 4.7.*
 * morris.js
 * bootstrap-datepicker.js 
 ---
