@@ -48,4 +48,4 @@
 * **Dashboard**: Insert orders (automaticaly split for first and second shift)
 * **Statistics**: Show all orders statistics
 * **Settings**: Set Orders, Items (foods/drinks), Types(tipology of foods/drinks), Users
-* **User/Prifile**: Edit your profile or change password
+* **User/Profile**: Edit your profile or change password
