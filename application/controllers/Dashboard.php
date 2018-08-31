@@ -35,7 +35,7 @@ class Dashboard extends CI_Controller {
 
     public function submit() {
         if($this->session->userType > 0){
-            $shift = (date('H')>4 && date('H')<16)?1:2;
+            $shift = (date('H')>5 && date('H')<17)?1:2;
             $date = date('Y-m-d');
 			$data = array(
                 'item' => $this->input->post('item', TRUE),
@@ -61,86 +61,5 @@ class Dashboard extends CI_Controller {
 			$this->output->set_status_header(401);
 		}
     }
-
-    // public function autoupdate($id) {
-    //     $items = $this->itemsValues($id);
-    //     $this->load->view('autoupdate', array('items' => $items));
-    // }
-
-    // private function dashItems() {
-    //     $items = $this->dashboard_model->getItems();
-    //     $types = $this->dashboard_model->getTypes();
-    //     $orders = $this->dashboard_model->getOrders();
-    //     $obj = array();
-    //     foreach($types as $type){
-    //         $itemsType = $this->dashboard_model->getItem($type->id);
-    //     }
-    //     return $obj;
-    // }
-
-    // private function itemsValues($id){
-    //     $set = $this->dashboard_model->getSets($id, array('pin','asc'));
-    //     $items = array();        
-    //     foreach($set as $s){
-    //         $s->lasttime = $s->updated; 
-    //         $s->show = null;
-    //         $s->color="btn-primary";
-    //         $s->action = null;
-    //         $s->ico = null;
-    //         $s->cssclass = null;
-    //         $pin = $s->pin;
-    //         switch($s->type){
-    //             // case 4: // notify
-    //             // if ($s->val == 0) {
-    //             //     $s->action = 'ardId='.$id.'&pin='.$pin.'&val=1';
-    //             //     $s->color = 'btn-default';
-    //             //     $s->show = "Off";
-    //             // } else {
-    //             //     $s->action = 'ardId='.$id.'&pin='.$pin.'&val=0';
-    //             //     $s->color = 'btn-primary';
-    //             //    $s->show = "On";                            
-    //             // }
-    //             // $s->ico = 'fa-power-off';
-    //             // $s->cssclass = 'action';
-    //             // break;
-    //             case 3: // impulse
-    //             $s->action = 'ardId='.$id.'&pin='.$pin.'&val=1';
-    //             $s->color = "btn-info";
-    //             $s->show = '<i class="fa fa-plug"></i>';
-    //             $s->cssclass = 'action';
-    //             $s->ico = 'fa-dot-circle-o';
-    //             break;
-    //             case 2: // actuator
-    //             if ($s->val == 0) {
-    //                 $s->action = 'ardId='.$id.'&pin='.$pin.'&val=1';
-    //                 $s->color = 'btn-default';
-    //                 $s->show = '<i class="fa fa-toggle-off"></i>';					
-    //             }
-    //             if ($s->val == 1)	{
-    //                 $s->action = 'ardId='.$id.'&pin='.$pin.'&val=0';
-    //                 $s->color = 'btn-primary';                              
-    //                 $s->show = '<i class="fa fa-toggle-on"></i>';
-    //             }
-    //             $s->cssclass = 'action';
-    //             $s->ico = 'fa-power-off';
-    //             break;
-    //             default: // 0: disabled, 1: sensors 
-    //             $s->cssclass = 'hidden';
-    //             break;
-    //         }
-    //         $items[] = $s;
-    //     }
-    //     $btnCheck = new stdClass;
-    //     $btnCheck->name = "Update Values";
-    //     $btnCheck->type = 4;
-    //     $btnCheck->status = 1;
-    //     $btnCheck->action = 'ardId='.$id.'&pin=n0&val=2';
-    //     $btnCheck->color = "btn-info";
-    //     $btnCheck->show = '<i class="fa fa-heartbeat"></i>';
-    //     $btnCheck->cssclass = 'action';
-    //     $btnCheck->ico = 'fa-dot-circle-o';
-    //     $items[] = $btnCheck;
-    //     return $items;
-    // }
 
 }

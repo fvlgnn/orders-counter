@@ -40,3 +40,12 @@
 	* username: *demo@server.com*
 	* password: *password*
 * create a new *Admin* user and delete *demo@server.com* user
+
+---
+
+## Description
+
+* **Dashboard**: Insert orders (automaticaly split for first and second shift)
+* **Statistics**: Show all orders statistics
+* **Settings**: Set Orders, Items (foods/drinks), Types(tipology of foods/drinks), Users
+* **User/Prifile**: Edit your profile or change password
