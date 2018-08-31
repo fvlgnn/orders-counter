@@ -1,0 +1,53 @@
+.DS_Store
+
+### CUSTOM ###
+#.htaccess
+#application/config/config.php
+#application/config/database.php
+#application/config/email.php
+assets/grocery_crud/themes/bootstrap/
+assets/uploads/
+*.bkp
+
+### CodeIgniter ###
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+/vendor/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Other Files
+#-------------------------
+/nbproject/
+.idea/*
+node_modules/
+composer.lock
+*.class
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/
