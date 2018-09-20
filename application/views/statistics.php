@@ -32,6 +32,7 @@
 	</div>
 </div>
 
+<?php if(!empty($dayOrders)): ?>
 <div class="row">
     <div class="col-lg-4">
         <div class="panel panel-yellow">
@@ -60,6 +61,7 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <?php if(isset($orderDays)): ?>
 <div class="row">
@@ -107,6 +109,7 @@ $(function() {
     });
     <?php endif; ?>
 
+    <?php if(!empty($dayOrders)): ?>
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
@@ -124,7 +127,7 @@ $(function() {
         data: [
             <?php foreach($dayOrders{1} as $dayOrder): ?>
             {
-                item: '[<?= ($dayOrder->destination==0)?"TS":"TA" ?><?= ($dayOrder->shift==1)?"1":"2" ?>] <?= $dayOrder->name ?>',
+                item: '<?= ($dayOrder->destination==0)?"S":"A" ?><?= ($dayOrder->shift==1)?"1":"2" ?>.<?= $dayOrder->name ?>',
                 total: <?= $dayOrder->total ?>
             },
             <?php endforeach; ?>
@@ -134,24 +137,11 @@ $(function() {
         labels: ['total'],
         barRatio: 0.4,
         xLabelAngle: 30,
+        gridTextSize: 12,
         hideHover: 'auto',
-        resize: true
+        resize: true,
     });
-    // Morris.Bar({
-    // element: 'morris-bar-chart',
-    // data: [
-    //     { y: '2006', a: 100, b: 90 },
-    //     { y: '2007', a: 75,  b: 65 },
-    //     { y: '2008', a: 50,  b: 40 },
-    //     { y: '2009', a: 75,  b: 65 },
-    //     { y: '2010', a: 50,  b: 40 },
-    //     { y: '2011', a: 75,  b: 65 },
-    //     { y: '2012', a: 100, b: 90 }
-    // ],
-    // xkey: 'y',
-    // ykeys: ['a', 'b'],
-    // labels: ['Series A', 'Series B']
-    // });
+    <?php endif; ?>
 
 });
 </script>

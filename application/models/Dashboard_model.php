@@ -13,12 +13,12 @@ class Dashboard_model extends CI_Model {
         return $query->result(); 
     }
 
-    public function getOrder($item, $destination, $shift, $date) {
+    public function getOrder($item, $destination, $date, $shift) {
         $query = $this->db
             ->where('item',$item)
             ->where('destination', $destination)
-            ->where('shift',$shift)
             ->where('date',$date)
+            ->where('shift',$shift)
             ->get('orders');
         return $query->row();
     }

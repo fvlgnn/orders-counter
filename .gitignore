@@ -1,10 +1,10 @@
 .DS_Store
 
 ### CUSTOM ###
-#.htaccess
-#application/config/config.php
-#application/config/database.php
-#application/config/email.php
+.htaccess
+application/config/config.php
+application/config/database.php
+application/config/email.php
 assets/grocery_crud/themes/bootstrap/
 assets/uploads/
 *.bkp

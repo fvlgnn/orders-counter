@@ -56,9 +56,6 @@ class Settings extends CI_Controller {
 
         $output = $crud->render();
         $data['datatable'] = $output;
-        
-        // $data['pageSubtitle'] = "Orders";
-        // $this->load->view('settings_table', $data);
 
         $values['pageSubtitle'] = "Orders";
         $values['datatable'] = $data['datatable'];
@@ -83,9 +80,6 @@ class Settings extends CI_Controller {
 
         $output = $crud->render();
         $data['datatable'] = $output;
-        
-        // $data['pageSubtitle'] = "Items";
-        // $this->load->view('settings_table', $data);
 
         $values['pageSubtitle'] = "Items";
         $values['datatable'] = $data['datatable'];
@@ -109,9 +103,6 @@ class Settings extends CI_Controller {
 
         $output = $crud->render();
         $data['datatable'] = $output;
-
-        // $data['pageSubtitle'] = "Types";
-        // $this->load->view('settings_table', $data);
 
         $values['pageSubtitle'] = "Types";
         $values['datatable'] = $data['datatable'];
@@ -144,9 +135,6 @@ class Settings extends CI_Controller {
             $output = $crud->render();
             $data['datatable'] = $output;
 
-            // $data['pageSubtitle'] = "Users";
-            // $this->load->view('settings_table', $data);
-
             $values['pageSubtitle'] = "Users";
             $values['datatable'] = $data['datatable'];
             $data['pageContent'] = $this->load->view('settings', $values, TRUE);
@@ -176,9 +164,6 @@ class Settings extends CI_Controller {
 
         $output = $crud->render();
         $data['datatable'] = $output;
-
-        // $data['pageSubtitle'] = "Orders";
-        // $this->load->view('settings_table', $data);
 
         $values['pageSubtitle'] = "Day Orders";
         $values['datatable'] = $data['datatable'];

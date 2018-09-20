@@ -77,10 +77,6 @@ class Statistics extends CI_Controller {
     private function orderDays(){
         $obj = array();
         $lastOrders = $this->statistics_model->getLastOrders();
-        // if(!$dayOrders){
-        //     $this->session->set_flashdata('error', 'No data for this day!');
-        //     redirect(base_url() . 'statistics');
-        // }
         $ordersTotal = 0;
         $ordersIn = 0;
         $ordersOut = 0;

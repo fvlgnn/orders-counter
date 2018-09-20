@@ -18,25 +18,24 @@
         <link rel="shortcut icon" href="<?= base_url(); ?>assets/favicon.png">
         <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/favicon.png">
 
-        <!-- Styles -->
-        <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <?php if(isset($datatable)): ?>
+            <?php foreach($datatable->css_files as $file): ?>
+                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+            <?php endforeach; ?>
+        <?php else: ?>
+            <!-- Styles -->
+            <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="<?= base_url(); ?>assets/css/plugins/morris.css" rel="stylesheet">
+            <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
+        <?php endif; ?>
         <link href="<?= base_url(); ?>assets/css/sb-admin.min.css" rel="stylesheet" type="text/css" />
         <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />
-        <!-- <link href="<?= base_url(); ?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css" /> -->
         <link href="<?= base_url(); ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="<?= base_url(); ?>assets/css/plugins/morris.css" rel="stylesheet">
-        <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
         <script src="<?= base_url(); ?>assets/js/pugins/html5shiv.min.js"></script>
         <script src="<?= base_url(); ?>assets/js/pugins/respond.min.js"></script>
         <![endif]-->
-
-        <?php if(isset($datatable)): ?>
-            <?php foreach($datatable->css_files as $file): ?>
-                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-            <?php endforeach; ?>
-        <?php endif; ?>
         
         <!-- JS -->
         <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
@@ -115,20 +114,21 @@
         </div>
         <!-- /#wrapper -->
 
-        <!-- JS -->
-        <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
-       
-        <script>
-            jQuery(function($){
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>
-
-         <?php if(isset($datatable)): ?>
+        <?php if(isset($datatable)): ?>
             <?php foreach($datatable->js_files as $file): ?>
                 <script src="<?php echo $file; ?>"></script>
             <?php endforeach; ?>
+        <?php else: ?>
+            <!-- JS -->
+            <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
+            <script>
+                jQuery(function($){
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
         <?php endif; ?>
+
+        
 
     </body>
   

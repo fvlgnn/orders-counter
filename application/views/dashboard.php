@@ -14,30 +14,30 @@
 </div>
 <!-- /.row -->
 
-<?php //var_dump($datedelay) ?>	
+<div class="row">
+	<div class="col-xs-6">
+		<div class="form-group">
+			<label>Date</label>
+			<div class="form-group">
+				<input type="text" class="form-control" id="selectDate" class="datepicker" value="<?= $date ?>" placeholder="Date">
+			</div>
+		</div>
+	</div>
+    <div class="col-xs-6">
+		<div class="form-group">
+			<label>Shift</label>
+			<div class="form-group">
+				<select class="form-control" id="selectShift">
+					<?php for($i=1; $i<=2; $i++): ?>
+					<option value="<?= $i ?>" <?= ($i==$shift)?'selected':''?>>Shift <?= $i ?></option>
+					<?php endfor; ?>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
 
-<!-- <div class="row">
-    <div class="col-xs-6">
-		<div class="form-group">
-			<label>Take In</label>
-			<div class="input-group">
-				<span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i></button></span>
-				<input class="form-control" type="text" name="takein">
-				<span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-check"></i></button></span>
-			</div>
-		</div>
-	</div>
-    <div class="col-xs-6">
-		<div class="form-group">
-			<label>Take Out</label>
-			<div class="input-group">
-				<span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-plus"></i></button></span>
-				<input class="form-control" type="text" name="takeout">
-				<span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-check"></i></button></span>
-			</div>
-		</div>
-	</div>
-</div> -->
+<?php //var_dump($datedelay) ?>	
 
 <div class="row">
 	<div class="col-lg-12">
@@ -57,13 +57,9 @@
 			<button class="btn btn-primary btn-lg disabled"><?= $item->name ?></button>
 			<button data-action="item=<?= $item->id ?>&destination=1" class="btn btn-primary btn-lg submit">
 				<i style="display: none;" class="fa fa-cog fa-spin icohide"></i>
-				<i class="fa fa-shopping-basket icoshow"></i> <!-- fa-home -->
+				<i class="fa fa-shopping-basket icoshow"></i>
 			</button>
 		</div> 
-		<!-- <button type="button" data-action="item=<?= $item->id ?>" class="btn btn-lg btn-primary horizontal-btn submit">
-			<i style="display: none; padding:0 20px;" class="icohide fa fa-cog fa-spin"></i>
-			<span class="icoshow"><?= $item->name ?></span>
-		</button> -->
 		<?php $i = $item->type ?>
 		<?php endforeach; ?>
 	</div>
@@ -76,10 +72,15 @@
 $(".submit").click(function() {
 	var el = $(this);
 	var apiUrl = '<?= base_url() . "dashboard/submit"; ?>';
+	var selectDate = $('#selectDate').val();
+	var selectShift = $('#selectShift').val();
+	var dataPost = el.data("action") + "&date=" + selectDate + "&shift=" + selectShift;
+	console.log(dataPost);
 	$.ajax({
 		type: "POST",
 		url: apiUrl,
-        data: el.data("action"),
+        // data: el.data("action"),
+        data: dataPost,
 		ContentType: "application/x-www-form-urlencoded",
 		cache: false,
 		beforeSend: function(){
@@ -99,8 +100,7 @@ $(".submit").click(function() {
 			}
 		},
 		success: function(data){
-			// $('#autoupdate').load('<?= base_url() . "dashboard/autoupdate/".end($this->uri->segments); ?>');
-			console.log('data:', el.data("action"));
+			console.log('data:', data);
 			el.removeClass('disabled');
 			el.find('.icoshow').show();
 			el.find('.icohide').hide();
@@ -108,12 +108,28 @@ $(".submit").click(function() {
 	});
 });
 </script>
+<script src="<?= base_url(); ?>assets/js/bootstrap-datepicker.js"></script>
+<script>
+    jQuery(function($){
+        $('#selectDate').datepicker({
+			format: 'yyyy-mm-dd'
+        }).on('changeDate', function(e) {
+			$('.datepicker').hide();
+            var selectDate = $('#selectDate').val();
+            // console.log(selectDate);
+            // var selectDate = e.date.toISOString().split('T')[0];
+            // console.log(e);
+		});
+	});
+	jQuery(function($){
+        $('#selectShift').on('change', function(e) {
+            var selectShift = $('#selectShift').val();
+            // console.log(selectShift);
+            // console.log(e);
+        });
+	});
+</script>
 
-<!-- <script type="text/javascript">
-	setInterval(function() {
-		location.reload();
-	}, 300000);
-</script> -->
 
 
 

@@ -27,6 +27,8 @@ class Dashboard extends CI_Controller {
             'pageTitle' => $data['pageTitle'],
             'items'     => $this->dashboard_model->getItemsType()
         );
+        $values['shift'] = (date('H')>5 && date('H')<17)?1:2;
+        $values['date'] = date('Y-m-d');
         // $items = $this->itemsValues($id);
         // $values['autoupdate'] = $this->load->view('autoupdate', array('items' => $items), TRUE);
         $data['pageContent'] = $this->load->view('dashboard', $values, TRUE);
@@ -35,13 +37,15 @@ class Dashboard extends CI_Controller {
 
     public function submit() {
         if($this->session->userType > 0){
-            $shift = (date('H')>5 && date('H')<17)?1:2;
-            $date = date('Y-m-d');
+            // $date = date('Y-m-d');
+            // $shift = (date('H')>5 && date('H')<17)?1:2;
+            $date = $this->input->post('date', TRUE);
+            $shift = $this->input->post('shift', TRUE);
 			$data = array(
                 'item' => $this->input->post('item', TRUE),
                 'destination' => $this->input->post('destination', TRUE)
             );
-            $order = $this->dashboard_model->getOrder($data['item'], $data['destination'], $shift, $date);
+            $order = $this->dashboard_model->getOrder($data['item'], $data['destination'], $date, $shift);
             if($order) {
                 $order->total++; 
                 $data = $order;
