@@ -14,9 +14,9 @@
         <meta name="keywords" content="<?= $config['metaData']['keywords']; ?>">
         <meta name="robots" content="<?= $config['metaData']['robots']; ?>">
 
-        <link rel="icon" href="<?= base_url(); ?>assets/favicon.png">
-        <link rel="shortcut icon" href="<?= base_url(); ?>assets/favicon.png">
-        <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/favicon.png">
+        <link rel="icon" href="<?= base_url(); ?>assets/images/favicon.png">
+        <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.png">
+        <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/images/favicon.png">
 
         <!-- Styles -->
         <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
