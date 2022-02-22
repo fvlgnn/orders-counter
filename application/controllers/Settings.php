@@ -130,7 +130,6 @@ class Settings extends CI_Controller {
 
             $crud->callback_before_insert(array($this,'encrypt_password_callback'));
             $crud->callback_before_update(array($this,'encrypt_password_callback'));
-            $crud->callback_edit_field('password',array($this,'decrypt_password_callback'));
 
             $output = $crud->render();
             $data['datatable'] = $output;
@@ -171,16 +170,13 @@ class Settings extends CI_Controller {
         $this->load->view('_main', $data);
     }
 
-    public function encrypt_password_callback($post_array, $primary_key = null) {
-        $this->load->library('encrypt');
-        $post_array['password'] = $this->encrypt->encode($post_array['password']);
+    public function encrypt_password_callback($post_array) {
+        $query = "SELECT * FROM users WHERE email='".$post_array['email']."'";
+        $row = $this->db->query($query)->row_array();
+        if($post_array['password'] != $row['password']){
+            $post_array['password'] = password_hash($post_array['password'], PASSWORD_BCRYPT);
+        }
         return $post_array;
-    }
-    
-    public function decrypt_password_callback($value) {
-        $this->load->library('encrypt');
-        $decrypted_password = $this->encrypt->decode($value);
-        return "<input id='field-password' class='form-control' type='password' name='password' value='$decrypted_password' />";
     }
 
 }

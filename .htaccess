@@ -1,11 +1,10 @@
-# Metti in produzione
-# SetEnv CI_ENV production
+SetEnv CI_ENV production
 
 Header set Access-Control-Allow-Origin "*"
 
 RewriteEngine on
 
-RewriteBase /orderscounter/
+RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

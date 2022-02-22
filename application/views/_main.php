@@ -18,15 +18,18 @@
         <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.png">
         <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/images/favicon.png">
 
-        <?php if(isset($datatable)): ?>
-            <?php foreach($datatable->css_files as $file): ?>
-                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-            <?php endforeach; ?>
-        <?php else: ?>
+        <?php if(!isset($datatable)): ?>
+    
+       
             <!-- Styles -->
             <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
             <link href="<?= base_url(); ?>assets/css/plugins/morris.css" rel="stylesheet">
             <link href="<?= base_url(); ?>assets/css/bootstrap-datepicker.css" rel="stylesheet">
+        <?php else: ?>
+            <?php foreach($datatable->css_files as $file): ?>
+                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+            <?php endforeach; ?>
+
         <?php endif; ?>
         <link href="<?= base_url(); ?>assets/css/sb-admin.min.css" rel="stylesheet" type="text/css" />
         <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css" />

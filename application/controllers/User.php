@@ -14,8 +14,6 @@ class User extends CI_Controller {
         
         $this->load->library('form_validation');
         $this->load->library('email');
-
-        $this->load->library('encrypt');
         
         $this->load->helper('cookie');
         $this->load->helper('security');
@@ -44,10 +42,7 @@ class User extends CI_Controller {
                 $email =  $this->input->post('email');
                 $password =  $this->input->post('password');
                 $login = $this->user_model->getLogin($email);
-                if( isset($login) &&
-                    $password === $this->encrypt->decode($login->password) && 
-                    $login->type > 0 )
-                {
+                if( isset($login) && password_verify($password, $login->password) && $login->type > 0 ) {
                     $sessiondata = array(
                         'userId'     => $login->id,
                         'userType'   => $login->type,
@@ -110,7 +105,7 @@ class User extends CI_Controller {
                             $this->input->post('password', TRUE) == $this->input->post('confirm_password', TRUE)
                             )
                             {
-                            $data['password'] = $this->encrypt->encode($this->input->post('password', TRUE));
+                            $data['password'] = password_hash($this->input->post('password', TRUE), PASSWORD_BCRYPT);
                         }
                         $this->user_model->updateUser($data);
                         $this->session->set_flashdata('info', 'Profile updated successfully');
@@ -146,12 +141,11 @@ class User extends CI_Controller {
         if( $this->input->method() == 'post' && is_null($key) ){
             $this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required|xss_clean');
             if($this->input->post('postSubmit')){
-                $expiry = time() + (3600 * 24);
                 $email = $this->input->post('email', TRUE);
                 $password = random_string('alnum', rand(8,12));
                 $data = array(
                     'email' => $email,
-                    'password' =>  $this->encrypt->encode($password),
+                    'password' =>  password_hash($password, PASSWORD_BCRYPT),
                 );
                 $userid = $this->user_model->updateUser($data);
                 if($userid){
