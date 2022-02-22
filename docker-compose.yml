@@ -4,7 +4,7 @@ services:
   web:
     container_name: orderscounter_web
     build:
-      context: ./docker/php-apache
+      context: ./docker
     ports:
       - 80:80
     volumes:
